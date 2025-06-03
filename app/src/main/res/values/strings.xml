@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Questionary</string>
+    <string name="score">Puntaje: %d</string>
+    <string name="next_question">Siguiente Pregunta</string>
+    <string name="end_questions">Finalizar</string>
+    <string name="success_game">¡Felicidades, has ganado!</string>
+    <string name="failure_game">Qué lástima… mejor suerte la próxima</string>
+    <string name="reset_game">Reiniciar Juego</string>
+</resources>

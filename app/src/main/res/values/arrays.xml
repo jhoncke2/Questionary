@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="com_google_android_gms_fonts_certs">
+        <item>
+            MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtz3f3bqG71T96wlgLM8f
+            1v9Y6OZ3hJh6hRqSxKbYwU3wB6S3/t6TQrWQfiZ4HtH9bEiYN5B7k0xoC5M6jdD+
+            mQtVOV3nhTvzTdwH7ZWzJyknOwIDAQAB
+        </item>
+    </array>
+</resources>
