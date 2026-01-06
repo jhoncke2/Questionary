@@ -21,8 +21,8 @@ El juego cuenta con una interfaz sencilla, un ícono y una canción de fondo div
 ## 🛠️ Tecnologías
 
 - Kotlin
+- Jetpack Compose
 - Android SDK
-- Android Studio
 
 ---
 
