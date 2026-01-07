@@ -1,5 +1,6 @@
 package com.example.questionary.ui
 
+import android.util.Log
 import androidx.compose.animation.animateColor
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
@@ -37,6 +38,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalInspectionMode
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
@@ -157,8 +159,9 @@ fun GameIntro(
                 },
                 modifier = Modifier
                     .fillMaxWidth()
-            ){
+                    .testTag("start_game"),
 
+            ){
                 Text(
                     "Empezar a jugar"
                 )
@@ -264,6 +267,8 @@ fun AnswerCard(
     modifier: Modifier = Modifier
 ){
     var color: Color = MaterialTheme.colorScheme.tertiaryContainer
+    val tag = "question_answer_${answer.isCorrect}"
+    Log.d("TEST_TAG", "Rendering answer with tag = $tag")
     if(
         currentUserAnswer != null &&
         currentUserAnswer.statement == answer.statement
@@ -290,6 +295,9 @@ fun AnswerCard(
 
     }
     Card (
+        onClick = {
+            viewModel.chooseAnswer(answer)
+        },
         colors = CardDefaults.cardColors(
             containerColor = color
         ),
@@ -298,11 +306,8 @@ fun AnswerCard(
             .padding(
                 vertical = 10.dp
             )
-            .clickable {
-                viewModel.chooseAnswer(answer)
-            }
             .clip(MaterialTheme.shapes.small)
-            .testTag("question_answer_${answer.isCorrect}")
+            .testTag(tag)
 
     ) {
         Text(

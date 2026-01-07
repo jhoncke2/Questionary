@@ -1,7 +1,5 @@
 package com.example.questionary.ui
 
-import android.media.MediaPlayer
-import android.util.Log
 import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,6 +7,7 @@ import com.example.questionary.data.Answer
 import com.example.questionary.data.Question
 import com.example.questionary.data.QuestionaryRepository
 import com.example.questionary.logic.AudioPlayer
+import com.example.questionary.logic.AudioPlayerImpl
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

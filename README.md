@@ -15,6 +15,8 @@ El juego cuenta con una interfaz sencilla, un ícono y una canción de fondo div
 - Pantalla de derrota si no se alcanza el puntaje mínimo
 - Música de fondo durante el juego
 - Desarrollado en Kotlin para Android
+- Tests unitarios en la carpeta src/test
+- Tests de integración en la carpeta src/androidTest
 
 ---
 
@@ -23,6 +25,7 @@ El juego cuenta con una interfaz sencilla, un ícono y una canción de fondo div
 - Kotlin
 - Jetpack Compose
 - Android SDK
+- Firebase Database
 
 ---
 

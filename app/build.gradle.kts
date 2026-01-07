@@ -53,6 +53,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.7")
     implementation("com.google.code.gson:gson:2.9.0")
     implementation(libs.androidx.ui.text.google.fonts)
+    implementation(libs.androidx.compose.runtime)
 
     testImplementation(libs.junit)
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")

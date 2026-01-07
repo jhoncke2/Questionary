@@ -19,6 +19,9 @@ fun ShootingStarsBackground(
     starCount: Int = 5,
     modifier: Modifier = Modifier
 ) {
+    val policy = LocalAnimationPolicy.current
+    if (!policy.enableInfiniteAnimations) return
+
     Box(modifier = Modifier.fillMaxSize()) {
         repeat(starCount) {
             key(it) { // clave para que cada una sea distinta

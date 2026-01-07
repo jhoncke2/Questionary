@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.questionary.data.QuestionaryRepository
-import com.example.questionary.logic.AudioPlayer
+import com.example.questionary.logic.AudioPlayerImpl
 import com.example.questionary.ui.QuestionaryScreen
 import com.example.questionary.ui.QuestionaryViewModel
 import com.example.questionary.ui.compose.QuestionaryTheme
@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        val audioPlayer = AudioPlayer(application = application)
+        val audioPlayer = AudioPlayerImpl(application = application)
         viewModel = QuestionaryViewModel(
             audioPlayer,
             7,

@@ -3,11 +3,11 @@ import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
 
-class QuestionaryRepository(
+open class QuestionaryRepository(
     val db: FirebaseFirestore
 ) {
 
-    suspend fun loadQuestionary(): List<Question> {
+    open suspend fun loadQuestionary(): List<Question> {
         val snapshot = db.collection("Questionary")
             .get()
             .await()

@@ -1,7 +1,7 @@
 package com.example.questionary.ui
 import com.example.questionary.data.QuestionaryRepository
 import com.example.questionary.data.QuestionaryTestRepository
-import com.example.questionary.logic.AudioPlayer
+import com.example.questionary.logic.AudioPlayerImpl
 import io.mockk.Runs
 import io.mockk.coEvery
 import io.mockk.every
@@ -27,7 +27,7 @@ import kotlin.math.roundToLong
 @OptIn(ExperimentalCoroutinesApi::class)
 class QuestionaryViewModelTest {
     private val nQuestionsPerGame = QuestionaryTestRepository.questionary.size
-    private val audioPlayer: AudioPlayer = mockk(relaxed = true)
+    private val audioPlayer: AudioPlayerImpl = mockk(relaxed = true)
     private val repository: QuestionaryRepository = mockk(relaxed = true)
     private val testDispatcher = StandardTestDispatcher()
     private lateinit var viewModel: QuestionaryViewModel
