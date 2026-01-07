@@ -7,7 +7,8 @@ import com.example.questionary.data.Answer
 import com.example.questionary.data.Question
 import com.example.questionary.data.QuestionaryRepository
 import com.example.questionary.logic.AudioPlayer
-import com.example.questionary.logic.AudioPlayerImpl
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -18,14 +19,15 @@ import kotlinx.coroutines.launch
 class QuestionaryViewModel(
     private val audioPlayer: AudioPlayer,
     private val nQuestionsPerGame: Int,
-    private val repository: QuestionaryRepository
+    private val repository: QuestionaryRepository,
+    private val dispatcher: CoroutineDispatcher = Dispatchers.Main
 ): ViewModel() {
     @VisibleForTesting
     internal val usedQuestions: MutableSet<Question> = mutableSetOf()
     @VisibleForTesting
-    internal val _uiState = MutableStateFlow(QuestionaryUIState())
+    internal val privUiState = MutableStateFlow(QuestionaryUIState())
     val uiState: StateFlow<QuestionaryUIState> =
-        _uiState.asStateFlow()
+        privUiState.asStateFlow()
 
     companion object {
         const val TIME_OF_ANSWER_VERIFICATION: Long = 3000
@@ -38,19 +40,19 @@ class QuestionaryViewModel(
     }
 
     fun chooseAnswer(answer: Answer) {
-        if(_uiState.value.status != GameStatus.AnswerVerified
-            && _uiState.value.status != GameStatus.WaitingForAnswerVerification){
+        if(privUiState.value.status != GameStatus.AnswerVerified
+            && privUiState.value.status != GameStatus.WaitingForAnswerVerification){
             var newStatus = GameStatus.WaitingForAnswerVerification
             updateState(
                 currentUserAnswer = answer,
                 status = newStatus
             )
-            viewModelScope.launch {
+            viewModelScope.launch(dispatcher) {
                 audioPlayer.playAudio(
                     status = newStatus
                 )
                 delay(TIME_OF_ANSWER_VERIFICATION)
-                var newScore = _uiState.value.score
+                var newScore = privUiState.value.score
                 val isCorrect = answer.isCorrect
                 if(isCorrect){
                     newScore += SCORE_PER_ANSWER
@@ -69,8 +71,8 @@ class QuestionaryViewModel(
     }
 
     private fun reset(){
-        viewModelScope.launch {
-            _uiState.value = QuestionaryUIState(
+        viewModelScope.launch(dispatcher) {
+            privUiState.value = QuestionaryUIState(
                 questionary = emptyList(),
                 currentQuestion = null,
                 status = GameStatus.Loading
@@ -78,7 +80,7 @@ class QuestionaryViewModel(
             usedQuestions.clear()
             val questionary = repository.loadQuestionary()
             val currentQuestion = nextQuestion(questionary)
-            _uiState.value = QuestionaryUIState(
+            privUiState.value = QuestionaryUIState(
                 questionary = questionary,
                 currentQuestion = currentQuestion,
                 status = GameStatus.Answering
@@ -103,9 +105,9 @@ class QuestionaryViewModel(
 
     fun goToNextQuestion() {
         audioPlayer.stopAudio()
-        if(_uiState.value.isLastQuestion){
+        if(privUiState.value.isLastQuestion){
             val status = GameStatus.GameOver
-            val gameIsWon = _uiState.value.score == MIN_SCORE_TO_WIN
+            val gameIsWon = privUiState.value.score == MIN_SCORE_TO_WIN
             updateState(
                 status = status,
                 deleteCurrentUserAnswer = true,
@@ -113,10 +115,10 @@ class QuestionaryViewModel(
             )
             audioPlayer.playAudio(
                 status = status,
-                wonGame =  _uiState.value.score >= MIN_SCORE_TO_WIN
+                wonGame =  privUiState.value.score >= MIN_SCORE_TO_WIN
             )
         }else{
-            val questionary = _uiState.value.questionary
+            val questionary = privUiState.value.questionary
             val question = nextQuestion(questionary)
             val isLastQuestion = usedQuestions.size == nQuestionsPerGame
             updateState(
@@ -138,7 +140,7 @@ class QuestionaryViewModel(
         isLastQuestion: Boolean? = null,
         gameIsWon: Boolean? = null
     ){
-        _uiState.update { lastState ->
+        privUiState.update { lastState ->
             lastState.copy(
                 currentQuestion = currentQuestion ?: lastState.currentQuestion,
                 score = currentScore ?: lastState.score,

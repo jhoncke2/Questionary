@@ -49,7 +49,7 @@ class QuestionaryViewModelTest {
     @Test
     fun ChooseAnswer_correctAnswer_MoreScoreAndTwoStatusChange(): Unit = runTest{
         val firstQuestion = QuestionaryTestRepository.questionary.first()
-        viewModel._uiState.value = QuestionaryUIState(
+        viewModel.privUiState.value = QuestionaryUIState(
             questionary = QuestionaryTestRepository.questionary,
             currentQuestion = firstQuestion,
             status = GameStatus.Answering,
@@ -97,7 +97,7 @@ class QuestionaryViewModelTest {
     @Test
     fun ChooseAnswer_IncorrectAnswer_TheSameScoreAndTwoStatusChanges(): Unit = runTest{
         val firstQuestion = QuestionaryTestRepository.questionary.first()
-        viewModel._uiState.value = QuestionaryUIState(
+        viewModel.privUiState.value = QuestionaryUIState(
             questionary = QuestionaryTestRepository.questionary,
             currentQuestion = firstQuestion,
             status = GameStatus.Answering,
@@ -146,7 +146,7 @@ class QuestionaryViewModelTest {
     fun ChooseAnswer_NotAllowedBecauseOfAnswerIsVerified_AllTheSameState(): Unit = runTest{
         val questionary = QuestionaryTestRepository.questionary
         val question = questionary.last()
-        viewModel._uiState.value = QuestionaryUIState(
+        viewModel.privUiState.value = QuestionaryUIState(
             questionary = questionary,
             currentQuestion = question,
             status = GameStatus.AnswerVerified,
@@ -181,7 +181,7 @@ class QuestionaryViewModelTest {
     fun ChooseAnswer_NotAllowedBecauseOfAnswerIsBeingVerified_AllTheSameState(): Unit = runTest{
         val questionary = QuestionaryTestRepository.questionary
         val question = questionary.last()
-        viewModel._uiState.value = QuestionaryUIState(
+        viewModel.privUiState.value = QuestionaryUIState(
             questionary = questionary,
             currentQuestion = question,
             status = GameStatus.WaitingForAnswerVerification,
@@ -219,7 +219,7 @@ class QuestionaryViewModelTest {
         val firstQuestion = questionary.first()
         viewModel.usedQuestions.clear()
         viewModel.usedQuestions.add(firstQuestion)
-        viewModel._uiState.value = QuestionaryUIState(
+        viewModel.privUiState.value = QuestionaryUIState(
             questionary = questionary,
             currentQuestion = firstQuestion,
             status = GameStatus.AnswerVerified,
@@ -252,7 +252,7 @@ class QuestionaryViewModelTest {
         viewModel.usedQuestions.clear()
         viewModel.usedQuestions.addAll(questionary.subList(0, nQuestionsPerGame-1))
         val initCurrentQuestion = questionary[nQuestionsPerGame-2]
-        viewModel._uiState.value = QuestionaryUIState(
+        viewModel.privUiState.value = QuestionaryUIState(
             questionary = questionary,
             currentQuestion = initCurrentQuestion,
             status = GameStatus.AnswerVerified,
@@ -285,7 +285,7 @@ class QuestionaryViewModelTest {
         viewModel.usedQuestions.addAll(questionary)
         val initCurrentQuestion = questionary.last()
         val gameScore = QuestionaryViewModel.MIN_SCORE_TO_WIN
-        viewModel._uiState.value = QuestionaryUIState(
+        viewModel.privUiState.value = QuestionaryUIState(
             questionary = questionary,
             currentQuestion = initCurrentQuestion,
             status = GameStatus.AnswerVerified,
@@ -318,7 +318,7 @@ class QuestionaryViewModelTest {
         viewModel.usedQuestions.addAll(questionary)
         val initCurrentQuestion = questionary.last()
         val gameScore = QuestionaryViewModel.MIN_SCORE_TO_WIN-1
-        viewModel._uiState.value = QuestionaryUIState(
+        viewModel.privUiState.value = QuestionaryUIState(
             questionary = questionary,
             currentQuestion = initCurrentQuestion,
             status = GameStatus.AnswerVerified,
@@ -350,7 +350,7 @@ class QuestionaryViewModelTest {
         viewModel.usedQuestions.clear()
         viewModel.usedQuestions.addAll(questionary)
         val initCurrentQuestion = questionary.last()
-        viewModel._uiState.value = QuestionaryUIState(
+        viewModel.privUiState.value = QuestionaryUIState(
             questionary = questionary,
             currentQuestion = initCurrentQuestion,
             status = GameStatus.GameOver,

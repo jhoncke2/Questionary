@@ -159,8 +159,7 @@ fun GameIntro(
                 },
                 modifier = Modifier
                     .fillMaxWidth()
-                    .testTag("start_game"),
-
+                    .testTag("start_game")
             ){
                 Text(
                     "Empezar a jugar"
