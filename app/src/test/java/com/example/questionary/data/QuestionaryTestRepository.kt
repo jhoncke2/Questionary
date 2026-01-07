@@ -4,7 +4,7 @@ object QuestionaryTestRepository {
     val questionary = listOf(
         Question(
             "1",
-            "¿Cuántos hijos quiero tener?",
+            "¿Cuánto es 2+2?",
             listOf(
                 Answer(
                     "3",
@@ -15,99 +15,99 @@ object QuestionaryTestRepository {
                     false
                 ),
                 Answer(
-                    "2",
+                    "4",
                     true
                 ),
                 Answer(
-                    "Ninguno, creo que los hijos no son necesarios",
+                    "-log_2(e)^2*i",
                     false
                 )
             )
         ),
         Question(
             "2",
-            "¿Cuál es mi libro de la Biblia favorito?",
+            "¿Cuántos estómagos tiene una vaca?",
             listOf(
                 Answer(
-                    "Génesis",
+                    "1",
                     false
                 ),
                 Answer(
-                    "Romanos",
+                    "4",
                     true
                 ),
                 Answer(
-                    "Apocalipsis",
+                    "3",
                     false
                 ),
                 Answer(
-                    "Eclesiástico",
+                    "-sin(e)",
                     false
                 )
             )
         ),
         Question(
             "3",
-            "¿Cuál es mi comida favorita?",
+            "La primera nota de la escála cromática",
             listOf(
                 Answer(
-                    "Pasta con albondiga",
+                    "Re",
                     false
                 ),
                 Answer(
-                    "Ajiaco Santafereño",
+                    "Fa",
                     false
                 ),
                 Answer(
-                    "Bandeja Paisa",
+                    "Do",
                     true
                 ),
                 Answer(
-                    "Mazamorra",
+                    "Sol",
                     false
                 )
             )
         ),
         Question(
             "4",
-            "¿Cuál de estos fue uno de mis apodos en secundaria?",
+            "¿Cuál es el planeta más grande del Sistema Solar?",
             listOf(
                 Answer(
-                    "Zombie",
+                    "Júpiter",
                     true
                 ),
                 Answer(
-                    "JhonnyNeitor",
+                    "Saturno",
                     false
                 ),
                 Answer(
-                    "Patas de Pingüino",
+                    "Urano",
                     false
                 ),
                 Answer(
-                    "El papu",
+                    "Neptuno",
                     false
                 )
             )
         ),
         Question(
             "5",
-            "¿Cuál es mi peor miedo en la tierra?",
+            "¿Cuál es la capital de Japón?",
             listOf(
                 Answer(
-                    "Que me persiga It",
+                    "París",
                     false
                 ),
                 Answer(
-                    "Casarme con una feminista",
+                    "Tokyo",
                     true
                 ),
                 Answer(
-                    "Que mis sobrinos se vuelvan socialistas",
+                    "Bogotá",
                     false
                 ),
                 Answer(
-                    "Que Macarena se vuelva transgénero",
+                    "Washington",
                     false
                 )
             )
