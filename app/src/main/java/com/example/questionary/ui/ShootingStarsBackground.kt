@@ -59,7 +59,7 @@ fun ShootingStar(
             // Normalización
             val norm = sqrt(1 + m*m)
             // Longitud controlada (1500 -> 2000)
-            val longitude = 1500f + Random.nextFloat() * 500f
+            val longitude = 1525f + Random.nextFloat() * 500f
             val dx = longitude / norm
             val dy = longitude * m / norm
             // 65% prob. de que x sea 0 (necesitamos más puntos en x = 0 que en y = 0)
