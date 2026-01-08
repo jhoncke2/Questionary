@@ -55,7 +55,6 @@ class QuestionaryViewModel(
                 var newScore = privUiState.value.score
                 val isCorrect = answer.isCorrect
                 /*
-                //TODO: Quitar cuando termine de probar CI/CL
                 if(isCorrect){
                     newScore += SCORE_PER_ANSWER
                 }
