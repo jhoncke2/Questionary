@@ -54,9 +54,11 @@ class QuestionaryViewModel(
                 delay(TIME_OF_ANSWER_VERIFICATION)
                 var newScore = privUiState.value.score
                 val isCorrect = answer.isCorrect
+                /*
                 if(isCorrect){
                     newScore += SCORE_PER_ANSWER
                 }
+                 */
                 newStatus = GameStatus.AnswerVerified
                 updateState(
                     status = newStatus,
