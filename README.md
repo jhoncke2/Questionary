@@ -12,11 +12,10 @@ El juego cuenta con una interfaz sencilla, un ícono y una canción de fondo div
 - Preguntas de selección múltiple
 - Sistema de respuestas correctas e incorrectas
 - Condición de victoria basada en el número de aciertos
-- Pantalla de derrota si no se alcanza el puntaje mínimo
-- Música de fondo durante el juego
+- Música de fondo y efectos durante el juego
 - Desarrollado en Kotlin para Android
 - Tests unitarios en la carpeta src/test
-- Implementación de CI/CL basado en tests unitarios
+- Implementación de CI/CD basado en tests unitarios
 
 ---
 
