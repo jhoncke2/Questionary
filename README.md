@@ -16,7 +16,7 @@ El juego cuenta con una interfaz sencilla, un ícono y una canción de fondo div
 - Música de fondo durante el juego
 - Desarrollado en Kotlin para Android
 - Tests unitarios en la carpeta src/test
-- Tests de integración en la carpeta src/androidTest
+- Implementación de CI/CL basado en tests unitarios
 
 ---
 
